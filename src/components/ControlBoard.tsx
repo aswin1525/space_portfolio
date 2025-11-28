@@ -10,12 +10,12 @@ interface ControlBoardProps {
 }
 
 const planets = [
-    { id: "home", name: "Home", color: "text-teal-400", image: "/assets/planets/planet-home.png" },
-    { id: "about", name: "About", color: "text-purple-300", image: "/assets/planets/planet-about.png" },
-    { id: "skills", name: "Skills", color: "text-blue-300", image: "/assets/planets/planet-skills.png" },
-    { id: "projects", name: "Projects", color: "text-orange-400", image: "/assets/planets/planet-projects.png" },
-    { id: "social", name: "Social", color: "text-green-400", image: "/assets/planets/planet-internship.png" },
-    { id: "contact", name: "Contact", color: "text-pink-400", image: "/assets/planets/planet-contact.png" },
+    { id: "home", name: "Home", color: "text-teal-400", image: "/assets/planets/planet-home.webp" },
+    { id: "about", name: "About", color: "text-purple-300", image: "/assets/planets/planet-about.webp" },
+    { id: "skills", name: "Skills", color: "text-blue-300", image: "/assets/planets/planet-skills.webp" },
+    { id: "projects", name: "Projects", color: "text-orange-400", image: "/assets/planets/planet-projects.webp" },
+    { id: "social", name: "Social", color: "text-green-400", image: "/assets/planets/planet-internship.webp" },
+    { id: "contact", name: "Contact", color: "text-pink-400", image: "/assets/planets/planet-contact.webp" },
 ];
 
 export default function ControlBoard({ onSelectPlanet, onExit, currentIndex, onIndexChange }: ControlBoardProps) {
@@ -59,7 +59,7 @@ export default function ControlBoard({ onSelectPlanet, onExit, currentIndex, onI
         <div
             className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat"
             style={{
-                backgroundImage: `url(/control_board_bg.png)`,
+                backgroundImage: `url(/control_board_bg.webp)`,
             }}
         >
 
@@ -78,7 +78,7 @@ export default function ControlBoard({ onSelectPlanet, onExit, currentIndex, onI
                         initial={{ y: -20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.5 }}
-                        className="text-4xl font-orbitron font-bold text-cyan-400 tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]"
+                        className="text-2xl md:text-4xl font-orbitron font-bold text-cyan-400 tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]"
                     >
                         Command Center
                     </motion.h2>
@@ -93,7 +93,7 @@ export default function ControlBoard({ onSelectPlanet, onExit, currentIndex, onI
                 </div>
 
                 {/* Main Interface - Carousel */}
-                <div className="relative w-full aspect-video max-h-[600px] bg-transparent rounded-3xl p-8 flex flex-col items-center justify-center overflow-hidden">
+                <div className="relative w-full aspect-video max-h-[400px] md:max-h-[600px] bg-transparent rounded-3xl p-4 md:p-8 flex flex-col items-center justify-center overflow-hidden">
 
                     {/* Navigation Buttons */}
                     <button
@@ -111,7 +111,7 @@ export default function ControlBoard({ onSelectPlanet, onExit, currentIndex, onI
                     </button>
 
                     {/* Planet Display */}
-                    <div className="relative w-[450px] h-[450px] flex items-center justify-center cursor-pointer" onClick={handleSelect}>
+                    <div className="relative w-[250px] h-[250px] md:w-[450px] md:h-[450px] flex items-center justify-center cursor-pointer" onClick={handleSelect}>
                         <AnimatePresence initial={false} custom={direction} mode="popLayout">
                             <motion.div
                                 key={currentIndex}
@@ -144,7 +144,7 @@ export default function ControlBoard({ onSelectPlanet, onExit, currentIndex, onI
                         transition={{ delay: 0.2 }}
                         className="mt-8 text-center"
                     >
-                        <h3 className={`text-3xl font-orbitron font-bold tracking-[0.2em] uppercase ${planets[currentIndex].color} drop-shadow-lg`}>
+                        <h3 className={`text-xl md:text-3xl font-orbitron font-bold tracking-[0.2em] uppercase ${planets[currentIndex].color} drop-shadow-lg`}>
                             {planets[currentIndex].name}
                         </h3>
                         <p className="text-white/40 text-xs tracking-widest mt-2 uppercase">

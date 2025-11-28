@@ -44,7 +44,7 @@
 @layer base {
   body {
     @apply bg-background text-white font-inter overflow-hidden;
-    background-image: url("/galaxy_bg.png");
+    background-image: url("/galaxy_bg.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

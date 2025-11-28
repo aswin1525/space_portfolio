@@ -75,7 +75,7 @@ export default function TravelAnimation({ theme = "teal" }: TravelAnimationProps
             />
 
             <motion.h2
-                className="relative z-10 text-4xl font-orbitron text-white tracking-[0.5em] uppercase italic"
+                className="relative z-10 text-2xl md:text-4xl font-orbitron text-white tracking-[0.2em] md:tracking-[0.5em] uppercase italic text-center px-4"
                 animate={{ opacity: [0.5, 1, 0.5], scale: [0.98, 1.02, 0.98] }}
                 transition={{ duration: 0.1, repeat: Infinity }}
             >
