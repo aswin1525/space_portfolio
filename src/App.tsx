@@ -25,7 +25,7 @@ function App() {
     // Simulate travel time
     setTimeout(() => {
       setGameState("planet");
-    }, 3000);
+    }, 2000);
   };
 
   const handleExitShip = () => {
