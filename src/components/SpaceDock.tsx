@@ -6,35 +6,42 @@ interface SpaceDockProps {
 }
 
 const planets = [
-    { name: "Home", color: "bg-teal-500", orbit: "w-[300px] h-[300px]" },
-    { name: "About", color: "bg-purple-500", orbit: "w-[400px] h-[400px]" },
-    { name: "Projects", color: "bg-orange-500", orbit: "w-[500px] h-[500px]" },
-    { name: "Skills", color: "bg-blue-500", orbit: "w-[600px] h-[600px]" },
-    { name: "Internship", color: "bg-green-500", orbit: "w-[700px] h-[700px]" },
-    { name: "Contact", color: "bg-pink-500", orbit: "w-[800px] h-[800px]" },
+    { name: "Home", image: "/assets/planets/planet-home.png", top: "10%", left: "15%", size: "w-64 h-64", delay: 0, glow: "drop-shadow-[0_0_30px_rgba(45,212,191,0.8)]" },
+    { name: "About", image: "/assets/planets/planet-about.png", top: "20%", left: "80%", size: "w-80 h-80", delay: 1, glow: "drop-shadow-[0_0_30px_rgba(192,132,252,0.8)]" },
+    { name: "Projects", image: "/assets/planets/planet-projects.png", top: "60%", left: "10%", size: "w-72 h-72", delay: 2, glow: "drop-shadow-[0_0_30px_rgba(251,146,60,0.8)]" },
+    { name: "Skills", image: "/assets/planets/planet-skills.png", top: "75%", left: "75%", size: "w-56 h-56", delay: 3, glow: "drop-shadow-[0_0_30px_rgba(96,165,250,0.8)]" },
+    { name: "Social", image: "/assets/planets/planet-internship.png", top: "40%", left: "5%", size: "w-48 h-48", delay: 1.5, glow: "drop-shadow-[0_0_30px_rgba(74,222,128,0.8)]" },
+    { name: "Contact", image: "/assets/planets/planet-contact.png", top: "5%", left: "50%", size: "w-40 h-40", delay: 2.5, glow: "drop-shadow-[0_0_30px_rgba(244,114,182,0.8)]" },
 ];
 
 export default function SpaceDock({ onEnter }: SpaceDockProps) {
     const [isHovering, setIsHovering] = useState(false);
 
     return (
-        <div className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-            {/* Orbit Rings & Planets */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black/20">
+            {/* Scattered Planets Background */}
+            <div className="absolute inset-0 pointer-events-none">
                 {planets.map((planet, index) => (
                     <motion.div
                         key={planet.name}
-                        className={`absolute rounded-full border border-white/5 ${planet.orbit}`}
-                        animate={{ rotate: 360 }}
+                        className={`absolute ${planet.size}`}
+                        style={{ top: planet.top, left: planet.left }}
+                        animate={{
+                            y: [0, -15, 0],
+                            x: [0, 10, 0],
+                            rotate: [0, 5, -5, 0],
+                        }}
                         transition={{
-                            duration: 20 + index * 10,
+                            duration: 5 + index,
                             repeat: Infinity,
-                            ease: "linear",
+                            ease: "easeInOut",
+                            delay: planet.delay,
                         }}
                     >
-                        <motion.div
-                            className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full ${planet.color} shadow-[0_0_10px_currentColor]`}
-                            whileHover={{ scale: 1.5, boxShadow: "0 0 20px currentColor" }}
+                        <img
+                            src={planet.image}
+                            alt={planet.name}
+                            className={`w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-500 ${planet.glow}`}
                         />
                     </motion.div>
                 ))}
@@ -42,7 +49,7 @@ export default function SpaceDock({ onEnter }: SpaceDockProps) {
 
             {/* Spaceship (Central Interactive Element) */}
             <motion.div
-                className="relative z-10 cursor-pointer group"
+                className="relative z-10 cursor-pointer group flex flex-col items-center"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
                 onClick={onEnter}
@@ -55,33 +62,21 @@ export default function SpaceDock({ onEnter }: SpaceDockProps) {
                     ease: "easeInOut",
                 }}
             >
-                {/* Spaceship Visual (SVG Placeholder) */}
-                <div className="relative w-32 h-64 transition-all duration-500 transform group-hover:scale-110">
+                {/* Spaceship Image */}
+                <div className="relative w-96 h-96 transition-transform duration-500 transform group-hover:scale-105 group-hover:-translate-y-2">
                     {/* Engine Glow */}
-                    <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-20 bg-cyan-500/50 blur-xl rounded-full transition-all duration-500 ${isHovering ? "opacity-100 scale-125" : "opacity-50"}`} />
+                    <div className={`absolute bottom-10 left-1/2 -translate-x-1/2 w-24 h-32 bg-cyan-500/40 blur-3xl rounded-full transition-all duration-500 ${isHovering ? "opacity-100 scale-125" : "opacity-50"}`} />
 
-                    {/* Ship Body */}
-                    <svg viewBox="0 0 100 200" className="w-full h-full drop-shadow-[0_0_15px_rgba(14,165,164,0.5)]">
-                        <path
-                            d="M50 0 L80 60 L90 150 L50 180 L10 150 L20 60 Z"
-                            fill="#0f172a"
-                            stroke="#0ea5a4"
-                            strokeWidth="2"
-                            className="transition-colors duration-300 group-hover:stroke-cyan-400"
-                        />
-                        <path
-                            d="M50 20 L50 180"
-                            stroke="#0ea5a4"
-                            strokeWidth="1"
-                            opacity="0.5"
-                        />
-                        <circle cx="50" cy="50" r="5" fill="#0ea5a4" className="animate-pulse" />
-                    </svg>
+                    <img
+                        src="/assets/spaceship.png"
+                        alt="Spaceship"
+                        className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(14,165,164,0.3)]"
+                    />
                 </div>
 
                 {/* Text Prompt */}
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-8 text-center w-64">
-                    <h1 className="text-2xl font-orbitron font-bold text-white mb-2 tracking-wider">
+                <div className="mt-4 text-center">
+                    <h1 className="text-4xl font-orbitron font-bold text-white mb-2 tracking-[0.2em] drop-shadow-lg">
                         ASWIN'S UNIVERSE
                     </h1>
                     <p className="text-cyan-400/80 text-sm font-inter tracking-widest uppercase animate-pulse">

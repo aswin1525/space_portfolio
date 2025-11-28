@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
 const skills = [
-    { category: "Frontend", items: ["React", "Tailwind CSS", "TypeScript", "Framer Motion", "Vite"], color: "border-blue-400 text-blue-400" },
-    { category: "Backend", items: ["Node.js", "Express", "Supabase", "Firebase", "Python"], color: "border-green-400 text-green-400" },
-    { category: "Database", items: ["MongoDB", "PostgreSQL", "MySQL"], color: "border-yellow-400 text-yellow-400" },
-    { category: "Tools", items: ["Git", "VS Code", "Figma", "Postman", "Docker"], color: "border-pink-400 text-pink-400" },
+    { category: "Frontend", items: ["React", "Tailwind CSS", "TypeScript", "JavaScript", "HTML", "CSS"], color: "border-blue-400 text-blue-400" },
+    { category: "Backend", items: ["Spring Boot", "Node.js", "Supabase", "Firebase", "Python"], color: "border-blue-400 text-blue-400" },
+    { category: "Database", items: ["MongoDB", "PostgreSQL", "MySQL"], color: "border-blue-400 text-blue-400" },
+    { category: "Tools", items: ["Git", "VS Code", "Figma", "Postman", "Docker"], color: "border-blue-400 text-blue-400" },
 ];
 
 export default function Skills() {

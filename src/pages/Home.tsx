@@ -13,12 +13,12 @@ export default function Home() {
                     ASWIN M
                 </h1>
                 <h2 className="text-2xl md:text-3xl font-orbitron text-cyan-200 mb-6">
-                    B.Tech IT (3rd Year)
+                    B.Tech IT Student
                 </h2>
                 <p className="text-lg md:text-xl text-gray-300 font-inter leading-relaxed max-w-2xl mx-auto mb-8">
-                    Building creative full-stack experiences with clean futuristic UI.
-                    <br />
-                    <span className="text-cyan-400">Back-End Developer Intern at Humeen</span>, designing modern web applications with immersive UI.
+                    Explore my universe, where every idea sparks a new world.
+                    Journey through the work I create with passion and detail.
+                    Enjoy the experience as you travel through my digital space.
                 </p>
 
                 <div className="flex gap-4 justify-center">

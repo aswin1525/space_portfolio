@@ -1,6 +1,21 @@
 import { motion } from "framer-motion";
 
-export default function TravelAnimation() {
+interface TravelAnimationProps {
+    theme?: "teal" | "purple" | "blue" | "orange" | "green" | "pink";
+}
+
+const colorThemes = {
+    teal: { star: "bg-teal-400/80", ring: "border-teal-500/30", gradient: "via-teal-900/20" },
+    purple: { star: "bg-purple-400/80", ring: "border-purple-500/30", gradient: "via-purple-900/20" },
+    blue: { star: "bg-blue-400/80", ring: "border-blue-500/30", gradient: "via-blue-900/20" },
+    orange: { star: "bg-orange-400/80", ring: "border-orange-500/30", gradient: "via-orange-900/20" },
+    green: { star: "bg-green-400/80", ring: "border-green-500/30", gradient: "via-green-900/20" },
+    pink: { star: "bg-pink-400/80", ring: "border-pink-500/30", gradient: "via-pink-900/20" },
+};
+
+export default function TravelAnimation({ theme = "teal" }: TravelAnimationProps) {
+    const colors = colorThemes[theme] || colorThemes.teal;
+
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black overflow-hidden">
             {/* Star Streaks */}
@@ -8,7 +23,7 @@ export default function TravelAnimation() {
                 {[...Array(50)].map((_, i) => (
                     <motion.div
                         key={i}
-                        className="absolute h-[2px] bg-cyan-400/80 rounded-full"
+                        className={`absolute h-[2px] ${colors.star} rounded-full`}
                         style={{
                             top: `${Math.random() * 100}%`,
                             left: "50%",
@@ -35,7 +50,7 @@ export default function TravelAnimation() {
                 {[...Array(5)].map((_, i) => (
                     <motion.div
                         key={`ring-${i}`}
-                        className="absolute rounded-full border-2 border-cyan-500/30"
+                        className={`absolute rounded-full border-2 ${colors.ring}`}
                         style={{ width: "100px", height: "100px" }}
                         animate={{
                             scale: [1, 20],
@@ -54,7 +69,7 @@ export default function TravelAnimation() {
 
             {/* Speed Lines */}
             <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-900/20 to-transparent"
+                className={`absolute inset-0 bg-gradient-to-r from-transparent ${colors.gradient} to-transparent`}
                 animate={{ opacity: [0.2, 0.5, 0.2] }}
                 transition={{ duration: 0.2, repeat: Infinity }}
             />

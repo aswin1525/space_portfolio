@@ -26,15 +26,14 @@ export default function About() {
                 <div className="glass-panel p-6 border-purple-500/30">
                     <h3 className="text-xl font-orbitron text-purple-400 mb-4">About Me</h3>
                     <p className="text-gray-300 leading-relaxed">
-                        I am a passionate developer who loves to bridge the gap between backend logic and frontend aesthetics.
-                        Currently pursuing B.Tech in IT, I specialize in building scalable web applications with a focus on user experience.
+                        I aim to contribute meaningfully to every project I take on by applying strong problem-solving, programming, and analytical skills. I constantly explore modern technologies, stay updated with industry trends, and focus on growing as a developer while delivering value to the organization.
                     </p>
                 </div>
 
                 <div className="glass-panel p-6 border-purple-500/30">
                     <h3 className="text-xl font-orbitron text-purple-400 mb-4">Interests</h3>
                     <div className="flex flex-wrap gap-3">
-                        {["Full-stack Development", "UI/UX Design", "Digital Art", "Gaming", "Sci-Fi"].map((tag) => (
+                        {["Full-stack Development", "UI/UX Design", "Digital Art", "Problem Solving"].map((tag) => (
                             <span key={tag} className="px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-sm">
                                 {tag}
                             </span>

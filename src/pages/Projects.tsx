@@ -9,15 +9,15 @@ const projects = [
         color: "border-orange-500/50",
     },
     {
-        title: "Digital Artwork Portfolio",
-        desc: "A showcase of creative digital art and poster designs.",
-        tech: ["React", "Framer Motion", "CSS"],
+        title: "AI Image Generator",
+        desc: "Transform simple prompts into visuals with the power of models.",
+        tech: ["python", "Stable Diffusion", "kaggle"],
         color: "border-orange-500/50",
     },
     {
-        title: "E-Commerce Dashboard",
-        desc: "Admin dashboard for managing products and orders.",
-        tech: ["Next.js", "TypeScript", "Prisma"],
+        title: "Space Themed Portfolio",
+        desc: "A futuristic, space-themed interactive portfolio where users explore my work by navigating across planets.",
+        tech: ["React", "TypeScript", "Vite"],
         color: "border-orange-500/50",
     },
 ];

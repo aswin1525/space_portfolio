@@ -5,29 +5,30 @@ import { LogOut, ChevronLeft, ChevronRight } from "lucide-react";
 interface ControlBoardProps {
     onSelectPlanet: (planet: string) => void;
     onExit: () => void;
+    currentIndex: number;
+    onIndexChange: (index: number) => void;
 }
 
 const planets = [
     { id: "home", name: "Home", color: "text-teal-400", image: "/assets/planets/planet-home.png" },
-    { id: "about", name: "About", color: "text-purple-400", image: "/assets/planets/planet-about.png" },
-    { id: "skills", name: "Skills", color: "text-blue-400", image: "/assets/planets/planet-skills.png" },
+    { id: "about", name: "About", color: "text-purple-300", image: "/assets/planets/planet-about.png" },
+    { id: "skills", name: "Skills", color: "text-blue-300", image: "/assets/planets/planet-skills.png" },
     { id: "projects", name: "Projects", color: "text-orange-400", image: "/assets/planets/planet-projects.png" },
-    { id: "internship", name: "Internship", color: "text-green-400", image: "/assets/planets/planet-internship.png" },
+    { id: "social", name: "Social", color: "text-green-400", image: "/assets/planets/planet-internship.png" },
     { id: "contact", name: "Contact", color: "text-pink-400", image: "/assets/planets/planet-contact.png" },
 ];
 
-export default function ControlBoard({ onSelectPlanet, onExit }: ControlBoardProps) {
-    const [currentIndex, setCurrentIndex] = useState(0);
+export default function ControlBoard({ onSelectPlanet, onExit, currentIndex, onIndexChange }: ControlBoardProps) {
     const [direction, setDirection] = useState(0);
 
     const nextPlanet = () => {
         setDirection(1);
-        setCurrentIndex((prev) => (prev + 1) % planets.length);
+        onIndexChange((currentIndex + 1) % planets.length);
     };
 
     const prevPlanet = () => {
         setDirection(-1);
-        setCurrentIndex((prev) => (prev - 1 + planets.length) % planets.length);
+        onIndexChange((currentIndex - 1 + planets.length) % planets.length);
     };
 
     const handleSelect = () => {
@@ -92,7 +93,7 @@ export default function ControlBoard({ onSelectPlanet, onExit }: ControlBoardPro
                 </div>
 
                 {/* Main Interface - Carousel */}
-                <div className="relative w-full aspect-video max-h-[600px] bg-transparent rounded-3xl border border-cyan-500/20 p-8 flex flex-col items-center justify-center overflow-hidden">
+                <div className="relative w-full aspect-video max-h-[600px] bg-transparent rounded-3xl p-8 flex flex-col items-center justify-center overflow-hidden">
 
                     {/* Navigation Buttons */}
                     <button
@@ -163,7 +164,7 @@ export default function ControlBoard({ onSelectPlanet, onExit }: ControlBoardPro
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.5 }}
                     onClick={onExit}
-                    className="mt-8 flex items-center gap-2 text-red-400/80 hover:text-red-400 font-orbitron text-sm tracking-widest transition-colors px-6 py-2 border border-red-500/20 rounded-full hover:bg-red-500/10"
+                    className="mt-30 flex items-center gap-2 text-red-400 hover:text-red-400 font-orbitron font-bold text-sm tracking-widest transition-all px-8 py-3 bg-black/60 border-2 border-red-500/50 rounded-full hover:bg-red-950/80 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.4)]"
                 >
                     <LogOut className="w-4 h-4" />
                     ABORT MISSION
